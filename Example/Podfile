@@ -1,0 +1,12 @@
+use_frameworks!
+
+target 'OSAT-VideoCompositor-macOS_Example' do
+  pod 'OSAT-VideoCompositor-macOS', :path => '../'
+
+  target 'OSAT-VideoCompositor-macOS_Tests' do
+    inherit! :search_paths
+
+    pod 'Quick', '~> 2.2.0'
+    pod 'Nimble', '~> 10.0.0'
+  end
+end

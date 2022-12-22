@@ -1,0 +1,6 @@
+framework module OSAT_VideoCompositor_macOS {
+  umbrella header "OSAT-VideoCompositor-macOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
