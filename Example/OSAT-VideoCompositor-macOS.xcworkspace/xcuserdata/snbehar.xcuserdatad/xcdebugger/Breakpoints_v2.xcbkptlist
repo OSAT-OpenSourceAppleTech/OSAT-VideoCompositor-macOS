@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "37CA3948-D25A-4DFE-A2CC-30B8FD258D2D"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C90CA8AF-F33C-46D6-AAFE-BB51C8F17389"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OSAT-VideoCompositor-macOS/OSAT-AddImageView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "62C5A2EF-1121-4EDE-864C-73935B36DB16"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OSAT-VideoCompositor-macOS/OSAT-AddImageView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "025FBAF8-B743-4CAC-A42F-69DACA01A0FF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OSAT-VideoCompositor-macOS/OSAT-AddWatermarkView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6F2F50D0-4221-4A56-9632-AF5C3BD78F7F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../OSAT-Composition.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "createVideoComposition(sourceVideoURL:exportURL:annotations:completionHandler:errorHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4BDF0310-0608-4AFC-9DB3-743768C1F3E0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OSAT-VideoCompositor-macOS/OSAT-PlayerViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "exportVideo()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8BBC532E-B0A2-40DF-97E9-349A0ECBB2E1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OSAT-VideoCompositor-macOS/OSAT-PlayerViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "exportVideo()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "88834837-6D16-446A-8027-E45F71F5B772"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../OSAT-Composition.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "createVideoComposition(sourceVideoURL:exportURL:annotations:completionHandler:errorHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C7E2A0A-19DE-4ED2-A671-AA51FD227C8C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OSAT-VideoCompositor-macOS/OSAT-AddTextView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7DDEE85B-6BA9-40ED-A3EA-C28D35A50A5B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OSAT-VideoCompositor-macOS/OSAT-AddWatermarkView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9073BC39-92B5-45DA-9A55-4A5188685A8B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OSAT-VideoCompositor-macOS/OSAT-AddWatermarkView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3D43F704-3E76-4AEB-A914-FE6174063EC0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OSAT-VideoCompositor-macOS/OSAT-PlayerViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "showPreview(layers:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3D43F704-3E76-4AEB-A914-FE6174063EC0 - 974db5d860e628b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OSAT_VideoCompositor_macOS_Example.PlayerViewModel.showPreview(layers: Swift.Array&lt;__C.CALayer&gt;) -&gt; ()"
+                  moduleName = "OSAT-VideoCompositor-macOS_Example"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/snbehar/dev/OSAT-VideoCompositor-macOS/Example/OSAT-VideoCompositor-macOS/OSAT-PlayerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "3D43F704-3E76-4AEB-A914-FE6174063EC0 - f90dd50dad5cea09"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.CALayer) -&gt; () in OSAT_VideoCompositor_macOS_Example.PlayerViewModel.showPreview(layers: Swift.Array&lt;__C.CALayer&gt;) -&gt; ()"
+                  moduleName = "OSAT-VideoCompositor-macOS_Example"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/snbehar/dev/OSAT-VideoCompositor-macOS/Example/OSAT-VideoCompositor-macOS/OSAT-PlayerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "83E2F3D6-7451-4E26-89AC-C8709E4196D4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OSAT-VideoCompositor-macOS/OSAT-PlayerViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "showPreview(layers:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ACE4720A-BED2-4FCF-B8F4-56EF80A62792"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OSAT-VideoCompositor-macOS/OSAT-PlayerViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "showPreview(layers:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "ACE4720A-BED2-4FCF-B8F4-56EF80A62792 - 974db5d860e62b58"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OSAT_VideoCompositor_macOS_Example.PlayerViewModel.showPreview(layers: Swift.Array&lt;__C.CALayer&gt;) -&gt; ()"
+                  moduleName = "OSAT-VideoCompositor-macOS_Example"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/snbehar/dev/OSAT-VideoCompositor-macOS/Example/OSAT-VideoCompositor-macOS/OSAT-PlayerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "1880">
+               </Location>
+               <Location
+                  uuid = "ACE4720A-BED2-4FCF-B8F4-56EF80A62792 - 1df75e9dc4f25e5d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.CALayer) -&gt; () in OSAT_VideoCompositor_macOS_Example.PlayerViewModel.showPreview(layers: Swift.Array&lt;__C.CALayer&gt;) -&gt; ()"
+                  moduleName = "OSAT-VideoCompositor-macOS_Example"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/snbehar/dev/OSAT-VideoCompositor-macOS/Example/OSAT-VideoCompositor-macOS/OSAT-PlayerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "96">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "568B73A1-AD36-4A78-9249-9F89CFC3A908"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OSAT-VideoCompositor-macOS/OSAT-PlayerViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "showPreview(layers:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "568B73A1-AD36-4A78-9249-9F89CFC3A908 - 974db5d860e62bfb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OSAT_VideoCompositor_macOS_Example.PlayerViewModel.showPreview(layers: Swift.Array&lt;__C.CALayer&gt;) -&gt; ()"
+                  moduleName = "OSAT-VideoCompositor-macOS_Example"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/snbehar/dev/OSAT-VideoCompositor-macOS/Example/OSAT-VideoCompositor-macOS/OSAT-PlayerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "484">
+               </Location>
+               <Location
+                  uuid = "568B73A1-AD36-4A78-9249-9F89CFC3A908 - 974db5d860e62bfb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OSAT_VideoCompositor_macOS_Example.PlayerViewModel.showPreview(layers: Swift.Array&lt;__C.CALayer&gt;) -&gt; ()"
+                  moduleName = "OSAT-VideoCompositor-macOS_Example"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/snbehar/dev/OSAT-VideoCompositor-macOS/Example/OSAT-VideoCompositor-macOS/OSAT-PlayerViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "1496">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
