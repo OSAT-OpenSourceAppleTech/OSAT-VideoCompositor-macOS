@@ -1,22 +1,24 @@
 {
   "name": "OSAT-VideoCompositor-macOS",
   "version": "0.1.0",
-  "summary": "A short description of OSAT-VideoCompositor-macOS.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/hemdutt/OSAT-VideoCompositor-macOS",
+  "summary": "Allow iOS app developers to annotate and augment a video file using Apple native Video composition APIs.",
+  "swift_versions": "5.5",
+  "description": "OSAT-VideoCompositor is an open source project which allow iOS app developers to annotate and augment a video file using Apple native Video composition APIs.",
+  "homepage": "https://github.com/OSAT-OpenSourceAppleTech/OSAT-VideoCompositor-macOS.git",
   "license": {
-    "type": "MIT",
+    "type": "GNU GENERAL PUBLIC LICENSE",
     "file": "LICENSE"
   },
   "authors": {
-    "hemdutt": "hdutt@cisco.com"
+    "Hem Dutt": "hemdutt.developer@gmail.com"
   },
   "source": {
-    "git": "https://github.com/hemdutt/OSAT-VideoCompositor-macOS.git",
+    "git": "https://github.com/OSAT-OpenSourceAppleTech/OSAT-VideoCompositor-macOS.git",
     "tag": "0.1.0"
   },
   "platforms": {
-    "osx": "10.10"
+    "osx": "13.0"
   },
-  "source_files": "OSAT-VideoCompositor-macOS/Classes/**/*"
+  "source_files": "OSAT-VideoCompositor-macOS/Classes/**/*",
+  "swift_version": "5.5"
 }
