@@ -74,14 +74,16 @@ struct ContentView: View {
             })
             HStack(content: {
                 Button("Add Video", action: {
-                    let panel = NSOpenPanel()
-                    panel.allowsMultipleSelection = false
-                    panel.canChooseDirectories = false
-                    panel.allowedContentTypes = [.video, .mpeg2Video, .appleProtectedMPEG4Video, .mpeg4Movie, .movie, .quickTimeMovie]
-                    if panel.runModal() == .OK {
-                        playerInstance.initialiseVideoPlayer(with: panel.url ?? URL(filePath: ""))
+                    DispatchQueue.main.async {
+                        let panel = NSOpenPanel()
+                        panel.allowsMultipleSelection = false
+                        panel.canChooseDirectories = false
+                        panel.allowedContentTypes = [.video, .mpeg2Video, .appleProtectedMPEG4Video, .mpeg4Movie, .movie, .quickTimeMovie]
+                        if panel.runModal() == .OK, let itemUrl = panel.url {
+                            playerInstance.addNewVideo(with: itemUrl)
+                        }
+                        playerInstance.jobsList = []
                     }
-                    playerInstance.jobsList = []
                 })
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 0))
                 
