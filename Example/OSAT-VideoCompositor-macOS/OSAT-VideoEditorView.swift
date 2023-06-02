@@ -83,6 +83,28 @@ struct ContentView: View {
                             playerInstance.addNewVideo(with: itemUrl)
                         }
                         playerInstance.jobsList = []
+                        playerInstance.initialiseVideoPlayer()
+                    }
+                })
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 0))
+                Button("Trim Video", action: {
+                    playerInstance.trimVideo(index: 0, startTime: 5.0, duration: 10.0)
+                })
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 0))
+                
+                
+                Button("Add Multi Video", action: {
+                    DispatchQueue.main.async {
+                        let panel = NSOpenPanel()
+                        panel.allowsMultipleSelection = true
+                        panel.canChooseDirectories = false
+                        panel.allowedContentTypes = [.video, .mpeg2Video, .appleProtectedMPEG4Video, .mpeg4Movie, .movie, .quickTimeMovie]
+                        if panel.runModal() == .OK {
+                            for url in panel.urls {
+                                playerInstance.addNewVideo(with: url)
+                            }
+                        }
+                        playerInstance.mergeVideos()
                     }
                 })
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 0))

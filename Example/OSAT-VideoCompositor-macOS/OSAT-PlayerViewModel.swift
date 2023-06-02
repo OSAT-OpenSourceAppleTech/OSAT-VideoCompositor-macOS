@@ -38,40 +38,33 @@ class PlayerViewModel: ObservableObject {
     let videoEditor = OSATVideoComposition()
     private var mainComposition: (mixComposition: AVMutableComposition, videoComposition: AVVideoComposition)?
     
-    func initialiseVideoPlayer(with url: URL) {
-        videoPlayer.playerView.player = AVPlayer(url: url)
-        videoPlayer.playerView.player?.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: .main, using: { time in
-            self.updateElapsedTime()
-            self.updateSeekPosition()
-        });
-        inputVideoURL = url
-        resetUI()
-        readyToPlay = true
+    
+    
+    func trimVideo(index: Int, startTime: Double, duration: Double) {
+        guard index < videoItems.count else { return }
+        let sourceItem = OSATVideoSource(videoURL: videoItems[index].videoURL, startTime: startTime, duration: duration)
+        self.mainComposition = videoEditor.trimVideo(sourceItem: sourceItem)
+        initVideoPlayer()
+    }
+    
+    func mergeVideos() {
+        self.mainComposition = videoEditor.mergeVideo(from: videoItems)
+        initVideoPlayer()
+    }
+    
+    func initialiseVideoPlayer() {
+        self.mainComposition = videoEditor.trimVideo(sourceItem: videoItems[0])
+        initVideoPlayer()
     }
     
     func addNewVideo(with url: URL, startTime: Double = .nan, duration: Double = .nan) {
         let newItem = OSATVideoSource(videoURL: url, startTime: startTime, duration: duration)
         videoItems.append(newItem)
-        createComposition()
-        /*
-         let asset = AVAsset(url: url)
-         let assetImgGenerate = AVAssetImageGenerator(asset: asset)
-         assetImgGenerate.appliesPreferredTrackTransform = true
-         assetImgGenerate.maximumSize = CGSize(width: 100, height: 100)
-         let time = CMTimeMakeWithSeconds(1.0, 600)
-         assetImgGenerate.generateCGImageAsynchronously(for: time) { cgImage, _, error in
-             DispatchQueue.main.async {
-                 if let image = cgImage {
-                     self.collectionItem.append(.init(videoItem: newItem, frameImage: Image(image, scale: 1.0, label: Text(""))))
-                 }
-             }
-         }
-         */
     }
     
     private func createComposition() {
-        self.mainComposition = videoEditor.makeMultiVideoComposition(from: videoItems)
-        initVideoPlayer()
+//        self.mainComposition = videoEditor.makeMultiVideoComposition(from: videoItems)
+//        initVideoPlayer()
     }
     
     private func initVideoPlayer() {
@@ -115,7 +108,7 @@ class PlayerViewModel: ObservableObject {
     func exportVideo() {
         isProcessingVideo = true
         videoPlayer.playerView.player?.pause()
-        videoEditor.createVideoComposition(sourceItems: self.videoItems, exportURL: inputVideoURL.deletingLastPathComponent(), annotations: jobsList, completionHandler: { exportURL in
+        videoEditor.addAnnotations(sourceItem: self.videoItems[0], exportURL: inputVideoURL.deletingLastPathComponent(), annotations: jobsList, completionHandler: { exportURL in
             let savePanel = NSSavePanel()
             savePanel.title = "Save"
             savePanel.nameFieldLabel = "Save field"

@@ -31,94 +31,85 @@ public struct OSATVideoComposition {
     public init() {}
     /// Creates a video composition for a source video with annotations
     /// - Parameters:
-    ///   - sourceVideoURL: URL for the source video
+    ///   - sourceItem: source video item
     ///   - exportURL: URL for saving the exported video
     ///   - annotations: list of annotations confroming to OSATAnnotationProtocol
     ///   - completionHandler: completionHandler is called when video composition execute succesfully
     ///   - errorHandler: errorHandler is called when video composition failed due to any reason
-    public func createVideoComposition(sourceItems:[OSATVideoSource], animation:Bool = true, exportURL: URL, annotations: [OSATAnnotationProtocol], completionHandler: @escaping(_ exportedFileURL: URL) -> Void, errorHandler: @escaping(_ error: OSATVideoCompositionError) -> Void) {
+    public func addAnnotations(sourceItem: OSATVideoSource, exportURL: URL, annotations: [OSATAnnotationProtocol], completionHandler: @escaping(_ exportedFileURL: URL) -> Void, errorHandler: @escaping(_ error: OSATVideoCompositionError) -> Void) {
         var insertTime = CMTime.zero
-        // currently it's support only single canvas size
-        let defaultSize = CGSize(width: 1280, height: 1280) // Default video size
         var arrayLayerInstructions:[AVMutableVideoCompositionLayerInstruction] = []
 
         // Init composition
         let mixComposition = AVMutableComposition()
         
-        for videoSource in sourceItems {
-            let videoAsset = AVAsset(url: videoSource.videoURL)
-            // Get video track
-            guard let videoTrack = videoAsset.tracks(withMediaType: AVMediaType.video).first else { continue }
-            
-            // Get audio track
-            var audioTrack:AVAssetTrack?
-            if videoAsset.tracks(withMediaType: AVMediaType.audio).count > 0 {
-                audioTrack = videoAsset.tracks(withMediaType: AVMediaType.audio).first
-            }
-            
-            // Init video & audio composition track
-            let videoCompositionTrack = mixComposition.addMutableTrack(withMediaType: AVMediaType.video,
-                                                                       preferredTrackID: Int32(kCMPersistentTrackID_Invalid))
-            
-            let audioCompositionTrack = mixComposition.addMutableTrack(withMediaType: AVMediaType.audio,
-                                                                       preferredTrackID: Int32(kCMPersistentTrackID_Invalid))
-            
-            do {
-                let startTime = videoSource.startTime.toCMTime() // CMTime.zero
-                let duration = videoSource.duration.toCMTime() // videoAsset.duration
-                
-                // Add video track to video composition at specific time
-                try videoCompositionTrack?.insertTimeRange(CMTimeRangeMake(start: startTime, duration: duration),
-                                                           of: videoTrack,
-                                                           at: insertTime)
-                
-                // Add audio track to audio composition at specific time
-                if let audioTrack = audioTrack {
-                    try audioCompositionTrack?.insertTimeRange(CMTimeRangeMake(start: startTime, duration: duration),
-                                                               of: audioTrack,
-                                                               at: insertTime)
-                }
-                
-                // Add layer instruction for video track
-                if let videoCompositionTrack = videoCompositionTrack {
-                    let layerInstruction = videoCompositionInstructionForTrack(track: videoCompositionTrack, asset: videoAsset, targetSize: defaultSize)
-                    
-                    // Hide video track before changing to new track
-                    let endTime = CMTimeAdd(insertTime, duration)
-                    
-                    if animation {
-                        let durationAnimation = 1.0.toCMTime()
-                        
-                        layerInstruction.setOpacityRamp(fromStartOpacity: 1.0, toEndOpacity: 0.0, timeRange: CMTimeRange(start: endTime, duration: durationAnimation))
-                    }
-                    else {
-                        layerInstruction.setOpacity(0, at: endTime)
-                    }
-                    
-                    arrayLayerInstructions.append(layerInstruction)
-                }
-                
-                // Increase the insert time
-                insertTime = CMTimeAdd(insertTime, duration)
-            }
-            catch {
-                print("Load track error")
-            }
+        let videoAsset = AVAsset(url: sourceItem.videoURL)
+        
+        // Get video track
+        guard let videoTrack = videoAsset.tracks(withMediaType: AVMediaType.video).first else { return }
+        let videoSize: CGSize = videoTrack.preferredTransform.orientation.isPortrait ? CGSize(width: videoTrack.naturalSize.height, height: videoTrack.naturalSize.width) : videoTrack.naturalSize
+        
+        // Get audio track
+        var audioTrack:AVAssetTrack?
+        if videoAsset.tracks(withMediaType: AVMediaType.audio).count > 0 {
+            audioTrack = videoAsset.tracks(withMediaType: AVMediaType.audio).first
         }
         
+        // Init video & audio composition track
+        let videoCompositionTrack = mixComposition.addMutableTrack(withMediaType: AVMediaType.video,
+                                                                   preferredTrackID: Int32(kCMPersistentTrackID_Invalid))
+        
+        let audioCompositionTrack = mixComposition.addMutableTrack(withMediaType: AVMediaType.audio,
+                                                                   preferredTrackID: Int32(kCMPersistentTrackID_Invalid))
+        
+        do {
+            let startTime = sourceItem.startTime.toCMTime() // CMTime.zero
+            let duration = sourceItem.duration.toCMTime() // videoAsset.duration
+            
+            // Add video track to video composition at specific time
+            try videoCompositionTrack?.insertTimeRange(CMTimeRangeMake(start: startTime, duration: duration),
+                                                       of: videoTrack,
+                                                       at: insertTime)
+            
+            // Add audio track to audio composition at specific time
+            if let audioTrack = audioTrack {
+                try audioCompositionTrack?.insertTimeRange(CMTimeRangeMake(start: startTime, duration: duration),
+                                                           of: audioTrack,
+                                                           at: insertTime)
+            }
+            
+            // Add layer instruction for video track
+            if let videoCompositionTrack = videoCompositionTrack {
+                let layerInstruction = videoCompositionInstructionForTrack(track: videoCompositionTrack, asset: videoAsset, targetSize: videoSize)
+                
+                // Hide video track before changing to new track
+                let endTime = CMTimeAdd(insertTime, duration)
+                
+                layerInstruction.setOpacity(0, at: endTime)
+                
+                arrayLayerInstructions.append(layerInstruction)
+            }
+            
+            // Increase the insert time
+            insertTime = CMTimeAdd(insertTime, duration)
+        }
+        catch {
+            print("Load track error")
+        }
+
         
         let videoLayer = CALayer()
-        videoLayer.frame = CGRect(origin: .zero, size: defaultSize)
+        videoLayer.frame = CGRect(origin: .zero, size: videoSize)
         
         videoLayer.frame = CGRect(
             x: 0,
             y: 0,
-            width: defaultSize.width,
-            height: defaultSize.height)
+            width: videoSize.width,
+            height: videoSize.height)
         
         let outputLayer = CALayer()
         outputLayer.addSublayer(videoLayer)
-        outputLayer.frame = CGRect(origin: .zero, size: defaultSize)
+        outputLayer.frame = CGRect(origin: .zero, size: videoSize)
         
         annotations.forEach {
             let annotationLayer = $0.getAnnotationLayer()
@@ -152,7 +143,7 @@ public struct OSATVideoComposition {
         mainVideoComposition.instructions = [mainInstruction]
         mainVideoComposition.animationTool = AVVideoCompositionCoreAnimationTool(postProcessingAsVideoLayer: videoLayer, in: outputLayer)
         mainVideoComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
-        mainVideoComposition.renderSize = defaultSize
+        mainVideoComposition.renderSize = videoSize
         
         
         guard let export = AVAssetExportSession(
@@ -197,14 +188,90 @@ public struct OSATVideoComposition {
         }
     }
     
-    /// Make a video from multiple videos. The user is able to merge and trim videos.
+    /// Make a trim on video
+    /// - Parameters:
+    ///   - sourceItem: add source video
+    /// - Returns: get composition and videocomposition
+    public func trimVideo(sourceItem:OSATVideoSource) -> (AVMutableComposition, AVMutableVideoComposition)? {
+        var insertTime = CMTime.zero
+        var arrayLayerInstructions:[AVMutableVideoCompositionLayerInstruction] = []
+
+        // Init composition
+        let mixComposition = AVMutableComposition()
+        
+        let videoAsset = AVAsset(url: sourceItem.videoURL)
+        // Get video track
+        guard let videoTrack = videoAsset.tracks(withMediaType: AVMediaType.video).first else { return nil }
+        let videoSize: CGSize = videoTrack.preferredTransform.orientation.isPortrait ? CGSize(width: videoTrack.naturalSize.height, height: videoTrack.naturalSize.width) : videoTrack.naturalSize
+        
+        // Get audio track
+        var audioTrack:AVAssetTrack?
+        if videoAsset.tracks(withMediaType: AVMediaType.audio).count > 0 {
+            audioTrack = videoAsset.tracks(withMediaType: AVMediaType.audio).first
+        }
+        
+        // Init video & audio composition track
+        let videoCompositionTrack = mixComposition.addMutableTrack(withMediaType: AVMediaType.video,
+                                                                   preferredTrackID: Int32(kCMPersistentTrackID_Invalid))
+        
+        let audioCompositionTrack = mixComposition.addMutableTrack(withMediaType: AVMediaType.audio,
+                                                                   preferredTrackID: Int32(kCMPersistentTrackID_Invalid))
+        
+        do {
+            let startTime = sourceItem.startTime.toCMTime() // CMTime.zero
+            let duration = sourceItem.duration.toCMTime() // videoAsset.duration
+            
+            // Add video track to video composition at specific time
+            try videoCompositionTrack?.insertTimeRange(CMTimeRangeMake(start: startTime, duration: duration),
+                                                       of: videoTrack,
+                                                       at: insertTime)
+            
+            // Add audio track to audio composition at specific time
+            if let audioTrack = audioTrack {
+                try audioCompositionTrack?.insertTimeRange(CMTimeRangeMake(start: startTime, duration: duration),
+                                                           of: audioTrack,
+                                                           at: insertTime)
+            }
+            
+            // Add layer instruction for video track
+            if let videoCompositionTrack = videoCompositionTrack {
+                let layerInstruction = videoCompositionInstructionForTrack(track: videoCompositionTrack, asset: videoAsset, targetSize: videoSize)
+                
+                // Hide video track before changing to new track
+                let endTime = CMTimeAdd(insertTime, duration)
+                layerInstruction.setOpacity(0, at: endTime)
+                
+                arrayLayerInstructions.append(layerInstruction)
+            }
+            
+            // Increase the insert time
+            insertTime = CMTimeAdd(insertTime, duration)
+        }
+        catch {
+            print("Load track error")
+        }
+        
+
+        // Main video composition instruction
+        let mainInstruction = AVMutableVideoCompositionInstruction()
+        mainInstruction.timeRange = CMTimeRangeMake(start: CMTime.zero, duration: insertTime)
+        mainInstruction.layerInstructions = arrayLayerInstructions
+        
+        // Main video composition
+        let mainVideoComposition = AVMutableVideoComposition()
+        mainVideoComposition.instructions = [mainInstruction]
+        mainVideoComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
+        mainVideoComposition.renderSize = videoSize
+        
+        return (mixComposition, mainVideoComposition)
+    }
+    
+    /// Make a video from multiple videos
     /// - Parameters:
     ///   - sourceItems: add source videos
     ///   - animation: set `true` for video end animation otherwise false
-    ///   - exportURL: URL for saving the exported video
-    ///   - completionHandler: completionHandler is called when video composition execute succesfully
-    ///   - errorHandler: errorHandler is called when video composition failed due to any reason
-    public func makeMultiVideoComposition(from sourceItems:[OSATVideoSource], animation:Bool = true) -> (AVMutableComposition, AVMutableVideoComposition) {
+    /// - Returns: get composition and videocomposition
+    public func mergeVideo(from sourceItems:[OSATVideoSource], animation:Bool = true) -> (AVMutableComposition, AVMutableVideoComposition) {
         var insertTime = CMTime.zero
         // currently it's support only single canvas size
         let defaultSize = CGSize(width: 1280, height: 1280) // Default video size
