@@ -67,9 +67,6 @@
 		76CA9124A797F50936BAECF5AFE4F615 /* OSAT-VideoCompositor-macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A412A3249E08FAE64F4E709951A915E /* OSAT-VideoCompositor-macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7DF5C2582E1C9DE5BC6BF84C0AF1337B /* BeCloseTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF890A2A4FC991DF458FC916054BE20 /* BeCloseTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		80DB7C67B0D7A32BF885B5CD17C745A1 /* NimbleEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28DEEB02EFC3A75527B62ADCCDADF66 /* NimbleEnvironment.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		81C2C95E2995434D00C618CE /* OSAT-Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C2C95D2995434D00C618CE /* OSAT-Annotation.swift */; };
-		81C2C960299604F200C618CE /* OSAT-Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C2C95F299604F200C618CE /* OSAT-Composition.swift */; };
-		81C2C9622996052C00C618CE /* OSAT-CompositionErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C2C9612996052C00C618CE /* OSAT-CompositionErrors.swift */; };
 		81DD05C33210EF2EBEF83D9CBA444354 /* SuiteHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A458D51ED6F68A621AFFB83B1FD2B2 /* SuiteHooks.swift */; };
 		81F4D2C9322FCC3FEA6B4C42B2007F21 /* NSBundle+CurrentTestBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF6A79D0B0B4FF82EA2A87EB9BBE01D /* NSBundle+CurrentTestBundle.swift */; };
 		8362B3BDF98DA5B10DE703225C64A6E7 /* ErrorUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3E176ED0A24E0AE732EC0FCB3D303 /* ErrorUtility.swift */; };
@@ -95,8 +92,11 @@
 		A0F1DDBCD61B35967DED6A8F6A69B9A5 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCB0936BD6C9B60195142D15A3D9FF4 /* Async.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		A487451E3CC40D7F9549FA292435273B /* NMBExceptionCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1843E6F6EF36915D14904B46876C42 /* NMBExceptionCapture.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		A90D90207A60A8EA57EC413966370028 /* OSAT-VideoCompositor-macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 296D35F11C169478F86396ABDD0F8067 /* OSAT-VideoCompositor-macOS-dummy.m */; };
-		AA75F2182A1F41E3001A544C /* OSATExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA75F2172A1F41E3001A544C /* OSATExtension.swift */; };
 		AAB067D093E2581A2D75134FFC7856E4 /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 24BC97B8588E96F2D0B84DEC0E412F58 /* Quick-dummy.m */; };
+		AAB9E3A52A333EBC002BBAAE /* OSATExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB9E39F2A333EBC002BBAAE /* OSATExtension.swift */; };
+		AAB9E3A62A333EBC002BBAAE /* OSAT-CompositionErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB9E3A02A333EBC002BBAAE /* OSAT-CompositionErrors.swift */; };
+		AAB9E3A72A333EBC002BBAAE /* OSAT-Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB9E3A12A333EBC002BBAAE /* OSAT-Annotation.swift */; };
+		AAB9E3A82A333EBC002BBAAE /* OSAT-Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB9E3A22A333EBC002BBAAE /* OSAT-Composition.swift */; };
 		AC0278DBE6921D2AA8CA82CBE8805202 /* AssertionDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29993AAD2DB29F0F1CC0B0D278EFB39E /* AssertionDispatcher.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		AC1B0A94D98FF6A485E56165BDAAFB8F /* BeAKindOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03911E45674148516513B8B7AB90489 /* BeAKindOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		ACAA345A1CCAFA1F4EE69B3C25D62558 /* Contain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7672AF984EAA487DDC6161633E12530 /* Contain.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -112,7 +112,6 @@
 		C7DB9FB7C8378ADC0DBC744F9359C0C9 /* BeIdenticalTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ED7710C8C7101F486AAFBC6FA9B0AA /* BeIdenticalTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		CA32F74C00C2448397720AB161360835 /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6E1AE6ED7183DD340A156553DCBDD8 /* CwlDarwinDefinitions.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		CB56A9AD610F6717133AA1110C1AAA94 /* QuickConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = A4ACF672EF788F2241B4D2EB8E7E4102 /* QuickConfiguration.m */; };
-		D366692853EB93DE9E4D33D610547FA4 /* OSAT-VideoEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DCF81F90676FE644075350460E7130 /* OSAT-VideoEditor.swift */; };
 		D6F1A9AFE522D73CB8BDF851FF6F7ACC /* BeEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB990A1ED09361EDFC2B43B68366F2 /* BeEmpty.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		DD130331C3820B0A4A655D6422167410 /* CwlCatchBadInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D043C8FE76106B062DEB67AAC63DEE /* CwlCatchBadInstruction.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		DDDD8CFFDE47FC8F058EB1D19179A89E /* QuickSpecBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 3756750B9AD0146AE7AB1637B7A04F6A /* QuickSpecBase.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -234,15 +233,11 @@
 		80395ACF09EF1682078D81C4E41631BA /* Pods-OSAT-VideoCompositor-macOS_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OSAT-VideoCompositor-macOS_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8087DE45015B71D2B06EA4510AE5CF6A /* Expectation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expectation.swift; path = Sources/Nimble/Expectation.swift; sourceTree = "<group>"; };
 		80F05E2830492C892E663350827C7C68 /* NMBStringify.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBStringify.m; path = Sources/NimbleObjectiveC/NMBStringify.m; sourceTree = "<group>"; };
-		81C2C95D2995434D00C618CE /* OSAT-Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSAT-Annotation.swift"; sourceTree = "<group>"; };
-		81C2C95F299604F200C618CE /* OSAT-Composition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSAT-Composition.swift"; sourceTree = "<group>"; };
-		81C2C9612996052C00C618CE /* OSAT-CompositionErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSAT-CompositionErrors.swift"; sourceTree = "<group>"; };
 		83D7871471FC091A902FC96C597120FE /* XCTestObservationCenter+Register.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestObservationCenter+Register.m"; path = "Sources/NimbleObjectiveC/XCTestObservationCenter+Register.m"; sourceTree = "<group>"; };
 		86B3CF136D0E8DD0798BC22ABF192274 /* OSAT-VideoCompositor-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "OSAT-VideoCompositor-macOS.modulemap"; sourceTree = "<group>"; };
 		87AA27D4E83D92CBFC0BF1D595195B3E /* MatcherProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherProtocols.swift; path = Sources/Nimble/Matchers/MatcherProtocols.swift; sourceTree = "<group>"; };
 		87D3E176ED0A24E0AE732EC0FCB3D303 /* ErrorUtility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ErrorUtility.swift; path = Sources/Quick/ErrorUtility.swift; sourceTree = "<group>"; };
 		887758EE2D86731E64552DE35DC0035B /* QuickTestObservation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestObservation.swift; path = Sources/Quick/QuickTestObservation.swift; sourceTree = "<group>"; };
-		89DCF81F90676FE644075350460E7130 /* OSAT-VideoEditor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "OSAT-VideoEditor.swift"; path = "OSAT-VideoCompositor-macOS/Classes/OSAT-VideoEditor.swift"; sourceTree = "<group>"; };
 		8BF7F9168F8A88D024DDAD4AF005F3F3 /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = Sources/Nimble/Utils/Errors.swift; sourceTree = "<group>"; };
 		8D71540198D097FAA9626A0DC5524B38 /* Pods-OSAT-VideoCompositor-macOS_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-OSAT-VideoCompositor-macOS_Example.modulemap"; sourceTree = "<group>"; };
 		8E16D9C6E1D0E3A1DFA1BDAD46507647 /* QuickSelectedTestSuiteBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickSelectedTestSuiteBuilder.swift; path = Sources/Quick/QuickSelectedTestSuiteBuilder.swift; sourceTree = "<group>"; };
@@ -266,7 +261,10 @@
 		A7A8F24DA8CF0F16CCB6505AC769EF6E /* Pods-OSAT-VideoCompositor-macOS_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OSAT-VideoCompositor-macOS_Example-Info.plist"; sourceTree = "<group>"; };
 		A7E4265253F0C2E2E88973422E9522FD /* ExampleGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleGroup.swift; path = Sources/Quick/ExampleGroup.swift; sourceTree = "<group>"; };
 		A83DB2FDCF978EEDF2D2D29B959D29A9 /* CwlCatchException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlCatchException.swift; path = Carthage/Checkouts/CwlCatchException/Sources/CwlCatchException/CwlCatchException.swift; sourceTree = "<group>"; };
-		AA75F2172A1F41E3001A544C /* OSATExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OSATExtension.swift; path = "OSAT-VideoCompositor-macOS/Classes/OSATExtension.swift"; sourceTree = "<group>"; };
+		AAB9E39F2A333EBC002BBAAE /* OSATExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSATExtension.swift; sourceTree = "<group>"; };
+		AAB9E3A02A333EBC002BBAAE /* OSAT-CompositionErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OSAT-CompositionErrors.swift"; sourceTree = "<group>"; };
+		AAB9E3A12A333EBC002BBAAE /* OSAT-Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OSAT-Annotation.swift"; sourceTree = "<group>"; };
+		AAB9E3A22A333EBC002BBAAE /* OSAT-Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OSAT-Composition.swift"; sourceTree = "<group>"; };
 		AE1C96AA6B530E65DF71C6A98C66BAB4 /* ThrowError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowError.swift; path = Sources/Nimble/Matchers/ThrowError.swift; sourceTree = "<group>"; };
 		B0482C5E4D124D00B21256C1057D8F6A /* NimbleXCTestHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleXCTestHandler.swift; path = Sources/Nimble/Adapters/NimbleXCTestHandler.swift; sourceTree = "<group>"; };
 		B2C1B9C367C87056A553EF8584DB5DD4 /* Pods-OSAT-VideoCompositor-macOS_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-OSAT-VideoCompositor-macOS_Tests.modulemap"; sourceTree = "<group>"; };
@@ -414,11 +412,7 @@
 		6FE90B81347B246B13C34483E262D591 /* OSAT-VideoCompositor-macOS */ = {
 			isa = PBXGroup;
 			children = (
-				89DCF81F90676FE644075350460E7130 /* OSAT-VideoEditor.swift */,
-				81C2C95D2995434D00C618CE /* OSAT-Annotation.swift */,
-				81C2C95F299604F200C618CE /* OSAT-Composition.swift */,
-				81C2C9612996052C00C618CE /* OSAT-CompositionErrors.swift */,
-				AA75F2172A1F41E3001A544C /* OSATExtension.swift */,
+				AAB9E39C2A333EBC002BBAAE /* Classes */,
 				C748C535D1B5B5920EEF6A35304F9502 /* Pod */,
 				D837DD25FE423F4ADF9BF314334DCD2D /* Support Files */,
 			);
@@ -447,6 +441,18 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Nimble";
+			sourceTree = "<group>";
+		};
+		AAB9E39C2A333EBC002BBAAE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				AAB9E3A22A333EBC002BBAAE /* OSAT-Composition.swift */,
+				AAB9E39F2A333EBC002BBAAE /* OSATExtension.swift */,
+				AAB9E3A02A333EBC002BBAAE /* OSAT-CompositionErrors.swift */,
+				AAB9E3A12A333EBC002BBAAE /* OSAT-Annotation.swift */,
+			);
+			name = Classes;
+			path = "OSAT-VideoCompositor-macOS/Classes";
 			sourceTree = "<group>";
 		};
 		AEB0AC498380CE554FDE3C09DB74DC69 /* Targets Support Files */ = {
@@ -894,12 +900,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA75F2182A1F41E3001A544C /* OSATExtension.swift in Sources */,
+				AAB9E3A82A333EBC002BBAAE /* OSAT-Composition.swift in Sources */,
+				AAB9E3A72A333EBC002BBAAE /* OSAT-Annotation.swift in Sources */,
 				A90D90207A60A8EA57EC413966370028 /* OSAT-VideoCompositor-macOS-dummy.m in Sources */,
-				81C2C960299604F200C618CE /* OSAT-Composition.swift in Sources */,
-				81C2C9622996052C00C618CE /* OSAT-CompositionErrors.swift in Sources */,
-				81C2C95E2995434D00C618CE /* OSAT-Annotation.swift in Sources */,
-				D366692853EB93DE9E4D33D610547FA4 /* OSAT-VideoEditor.swift in Sources */,
+				AAB9E3A62A333EBC002BBAAE /* OSAT-CompositionErrors.swift in Sources */,
+				AAB9E3A52A333EBC002BBAAE /* OSATExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

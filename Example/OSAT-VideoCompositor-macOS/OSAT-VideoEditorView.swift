@@ -80,34 +80,22 @@ struct ContentView: View {
                         panel.canChooseDirectories = false
                         panel.allowedContentTypes = [.video, .mpeg2Video, .appleProtectedMPEG4Video, .mpeg4Movie, .movie, .quickTimeMovie]
                         if panel.runModal() == .OK, let itemUrl = panel.url {
-                            playerInstance.addNewVideo(with: itemUrl)
+                            playerInstance.addVideo(with: itemUrl)
                         }
                         playerInstance.jobsList = []
-                        playerInstance.initialiseVideoPlayer()
-                    }
-                })
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 0))
-                Button("Trim Video", action: {
-                    playerInstance.trimVideo(index: 0, startTime: 5.0, duration: 10.0)
-                })
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 0))
-                
-                
-                Button("Add Multi Video", action: {
-                    DispatchQueue.main.async {
-                        let panel = NSOpenPanel()
-                        panel.allowsMultipleSelection = true
-                        panel.canChooseDirectories = false
-                        panel.allowedContentTypes = [.video, .mpeg2Video, .appleProtectedMPEG4Video, .mpeg4Movie, .movie, .quickTimeMovie]
-                        if panel.runModal() == .OK {
-                            for url in panel.urls {
-                                playerInstance.addNewVideo(with: url)
-                            }
-                        }
                         playerInstance.mergeVideos()
                     }
                 })
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 5, trailing: 0))
+                
+                Toggle(isOn: Binding(get: { return playerInstance.openedPanel == .addTrimPanel }, set: { newValue in
+                    playerInstance.openedPanel = newValue ? .addTrimPanel : .noOpenPanel
+                }), label: {
+                    Text("Trim Video")
+                })
+                .toggleStyle(.button)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                .disabled(!playerInstance.readyToPlay)
                 
                 Toggle(isOn: Binding(get: { return playerInstance.openedPanel == .addWatermarkPanel }, set: { newValue in
                     playerInstance.openedPanel = newValue ? .addWatermarkPanel : .noOpenPanel

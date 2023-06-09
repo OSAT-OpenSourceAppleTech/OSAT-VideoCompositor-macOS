@@ -16,6 +16,7 @@ enum openPanel: Int {
     case addImagePanel = 2
     case addTextPanel = 3
     case addGIFPanel = 4
+    case addTrimPanel = 5
 }
 
 class PlayerViewModel: ObservableObject {
@@ -30,7 +31,7 @@ class PlayerViewModel: ObservableObject {
     
     @Published var openedPanel: openPanel = .noOpenPanel
     
-    private var videoItems = [OSATVideoSource]()
+    private(set) var videoItems = [OSATVideoSource]()
     
     var jobsList: [OSATAnnotationProtocol] = []
     
@@ -38,33 +39,9 @@ class PlayerViewModel: ObservableObject {
     let videoEditor = OSATVideoComposition()
     private var mainComposition: (mixComposition: AVMutableComposition, videoComposition: AVVideoComposition)?
     
-    
-    
-    func trimVideo(index: Int, startTime: Double, duration: Double) {
-        guard index < videoItems.count else { return }
-        let sourceItem = OSATVideoSource(videoURL: videoItems[index].videoURL, startTime: startTime, duration: duration)
-        self.mainComposition = videoEditor.trimVideo(sourceItem: sourceItem)
-        initVideoPlayer()
-    }
-    
-    func mergeVideos() {
-        self.mainComposition = videoEditor.mergeVideo(from: videoItems)
-        initVideoPlayer()
-    }
-    
-    func initialiseVideoPlayer() {
-        self.mainComposition = videoEditor.trimVideo(sourceItem: videoItems[0])
-        initVideoPlayer()
-    }
-    
-    func addNewVideo(with url: URL, startTime: Double = .nan, duration: Double = .nan) {
+    func addVideo(with url: URL, startTime: Double = .nan, duration: Double = .nan) {
         let newItem = OSATVideoSource(videoURL: url, startTime: startTime, duration: duration)
         videoItems.append(newItem)
-    }
-    
-    private func createComposition() {
-//        self.mainComposition = videoEditor.makeMultiVideoComposition(from: videoItems)
-//        initVideoPlayer()
     }
     
     private func initVideoPlayer() {
@@ -105,10 +82,24 @@ class PlayerViewModel: ObservableObject {
         jobsList.append(job)
     }
     
+    func trimVideo(index: Int, startTime: Double, duration: Double) {
+        guard !videoItems.isEmpty else { return }
+        guard index < videoItems.count else { return }
+        let sourceItem = OSATVideoSource(videoURL: videoItems[index].videoURL, startTime: startTime, duration: duration)
+        self.mainComposition = videoEditor.trimVideo(sourceItem: sourceItem)
+        initVideoPlayer()
+    }
+    
+    func mergeVideos() {
+        guard !videoItems.isEmpty else { return }
+        self.mainComposition = videoEditor.mergeVideo(from: videoItems)
+        initVideoPlayer()
+    }
+    
     func exportVideo() {
         isProcessingVideo = true
         videoPlayer.playerView.player?.pause()
-        videoEditor.addAnnotations(sourceItem: self.videoItems[0], exportURL: inputVideoURL.deletingLastPathComponent(), annotations: jobsList, completionHandler: { exportURL in
+        videoEditor.addAnnotations(sourceItem: self.videoItems[0], exportURL: inputVideoURL.deletingLastPathComponent(), annotations: jobsList, completionHandler: { exporter in
             let savePanel = NSSavePanel()
             savePanel.title = "Save"
             savePanel.nameFieldLabel = "Save field"
@@ -119,14 +110,15 @@ class PlayerViewModel: ObservableObject {
                         
             let response = savePanel.runModal()
             if response == .OK  {
-                guard let destination = savePanel.url else { return }
+                guard let destination = savePanel.url, let outUrl = exporter.outputURL else { return }
                 do {
                     if FileManager.default.fileExists(atPath: destination.path) {
                         try FileManager.default.removeItem(at: destination)
                     }
-                    try FileManager.default.moveItem(at: exportURL, to: destination)
+                    try FileManager.default.moveItem(at: outUrl, to: destination)
                     self.videoItems.removeAll()
-                    self.addNewVideo(with: destination)
+                    self.addVideo(with: destination)
+                    self.mergeVideos()
                 } catch {
                     print("Error while saving file! Aborting save file!")
                 }

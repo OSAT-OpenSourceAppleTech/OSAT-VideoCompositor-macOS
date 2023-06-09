@@ -19,6 +19,7 @@
 		81C2C96A299A8AC100C618CE /* OSAT-AddImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C2C969299A8AC100C618CE /* OSAT-AddImageView.swift */; };
 		81C2C96C299A8AD700C618CE /* OSAT-AddTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C2C96B299A8AD700C618CE /* OSAT-AddTextView.swift */; };
 		81C2C96E299A8AE800C618CE /* OSAT-AddGIFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C2C96D299A8AE800C618CE /* OSAT-AddGIFView.swift */; };
+		AAB9E3AA2A334445002BBAAE /* OSAT-TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB9E3A92A334445002BBAAE /* OSAT-TrimViewController.swift */; };
 		ED83F68F20348A760038D96B /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED83F68E20348A760038D96B /* Tests.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		81C2C96D299A8AE800C618CE /* OSAT-AddGIFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSAT-AddGIFView.swift"; sourceTree = "<group>"; };
 		8E8DB71A83FBB953A2B4CF86 /* Pods-OSAT-VideoCompositor-macOS_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSAT-VideoCompositor-macOS_Example.debug.xcconfig"; path = "Target Support Files/Pods-OSAT-VideoCompositor-macOS_Example/Pods-OSAT-VideoCompositor-macOS_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		AA80DD5D21F1DE440D21107F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		AAB9E3A92A334445002BBAAE /* OSAT-TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSAT-TrimViewController.swift"; sourceTree = "<group>"; };
 		ACE7DC531DD6C6C76B3BB5FB /* Pods-OSAT-VideoCompositor-macOS_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSAT-VideoCompositor-macOS_Example.release.xcconfig"; path = "Target Support Files/Pods-OSAT-VideoCompositor-macOS_Example/Pods-OSAT-VideoCompositor-macOS_Example.release.xcconfig"; sourceTree = "<group>"; };
 		BF63672E263D431348730B1C /* Pods-OSAT-VideoCompositor-macOS_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSAT-VideoCompositor-macOS_Tests.release.xcconfig"; path = "Target Support Files/Pods-OSAT-VideoCompositor-macOS_Tests/Pods-OSAT-VideoCompositor-macOS_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		ED18535D215B0C7A8598E9FD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				81C2C969299A8AC100C618CE /* OSAT-AddImageView.swift */,
 				81C2C96B299A8AD700C618CE /* OSAT-AddTextView.swift */,
 				81C2C96D299A8AE800C618CE /* OSAT-AddGIFView.swift */,
+				AAB9E3A92A334445002BBAAE /* OSAT-TrimViewController.swift */,
 				81C2C95B29950E7000C618CE /* OSAT-PlayerViewModel.swift */,
 			);
 			path = "OSAT-VideoCompositor-macOS";
@@ -367,6 +370,7 @@
 				81C2C95C29950E7000C618CE /* OSAT-PlayerViewModel.swift in Sources */,
 				81C2C96A299A8AC100C618CE /* OSAT-AddImageView.swift in Sources */,
 				81C2C9572995043300C618CE /* OSAT-VideoEditorView.swift in Sources */,
+				AAB9E3AA2A334445002BBAAE /* OSAT-TrimViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
