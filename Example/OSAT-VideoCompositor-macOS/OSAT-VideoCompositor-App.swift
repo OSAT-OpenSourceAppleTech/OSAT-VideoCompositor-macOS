@@ -37,6 +37,10 @@ struct VideoEditor_SwiftUIApp: App {
                 AddGIFView()
                     .environmentObject(playerInstance)
             }
+            if playerInstance.openedPanel == .addTrimPanel {
+                TrimViewController()
+                    .environmentObject(playerInstance)
+            }
         })
         .windowResizability(.contentMinSize)
     }

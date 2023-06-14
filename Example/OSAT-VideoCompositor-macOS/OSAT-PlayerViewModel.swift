@@ -16,6 +16,7 @@ enum openPanel: Int {
     case addImagePanel = 2
     case addTextPanel = 3
     case addGIFPanel = 4
+    case addTrimPanel = 5
 }
 
 class PlayerViewModel: ObservableObject {
@@ -30,20 +31,45 @@ class PlayerViewModel: ObservableObject {
     
     @Published var openedPanel: openPanel = .noOpenPanel
     
+    private(set) var videoItems = [OSATVideoSource]()
+    
     var jobsList: [OSATAnnotationProtocol] = []
     
     let videoPlayer = AVPlayerViewWrapper(playerView: AVPlayerView())
     let videoEditor = OSATVideoComposition()
+    private var mainComposition: (mixComposition: AVMutableComposition, videoComposition: AVVideoComposition)?
     
-    func initialiseVideoPlayer(with url: URL) {
-        videoPlayer.playerView.player = AVPlayer(url: url)
-        videoPlayer.playerView.player?.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: .main, using: { time in
-            self.updateElapsedTime()
-            self.updateSeekPosition()
-        });
-        inputVideoURL = url
-        resetUI()
-        readyToPlay = true
+    func addVideo(with url: URL, startTime: Double = .nan, duration: Double = .nan) {
+        let newItem = OSATVideoSource(videoURL: url, startTime: startTime, duration: duration)
+        videoItems.append(newItem)
+    }
+    
+    private func initVideoPlayer() {
+        guard let mainComposition = self.mainComposition else { return }
+        
+        let playerItem = AVPlayerItem.init(asset: mainComposition.mixComposition)
+        playerItem.videoComposition = mainComposition.videoComposition
+        if videoPlayer.playerView.player == nil {
+            videoPlayer.playerView.player = AVPlayer.init(playerItem: playerItem)
+            videoPlayer.playerView.player?.addPeriodicTimeObserver(
+                forInterval: CMTime(seconds: 0.01, preferredTimescale: mainComposition.mixComposition.duration.timescale),
+                queue: nil,
+                using: { (currentTime) in
+                    self.updateElapsedTime()
+                    self.updateSeekPosition()
+                })
+            guard let player = videoPlayer.playerView.player else { return }
+            player.seek(to: kCMTimeZero)
+            resetUI()
+            readyToPlay = true
+            
+        }
+        else {
+            guard let player = videoPlayer.playerView.player else { return }
+            player.replaceCurrentItem(with: playerItem)
+            resetUI()
+            readyToPlay = true
+        }
     }
     
     func createAddImageJob(image: NSImage, frame: NSRect, timeRange: CMTimeRange?) {
@@ -56,10 +82,24 @@ class PlayerViewModel: ObservableObject {
         jobsList.append(job)
     }
     
+    func trimVideo(index: Int, startTime: Double, duration: Double) {
+        guard !videoItems.isEmpty else { return }
+        guard index < videoItems.count else { return }
+        let sourceItem = OSATVideoSource(videoURL: videoItems[index].videoURL, startTime: startTime, duration: duration)
+        self.mainComposition = videoEditor.trimVideo(sourceItem: sourceItem)
+        initVideoPlayer()
+    }
+    
+    func mergeVideos() {
+        guard !videoItems.isEmpty else { return }
+        self.mainComposition = videoEditor.mergeVideo(from: videoItems)
+        initVideoPlayer()
+    }
+    
     func exportVideo() {
         isProcessingVideo = true
         videoPlayer.playerView.player?.pause()
-        videoEditor.createVideoComposition(sourceVideoURL: inputVideoURL, exportURL: inputVideoURL.deletingLastPathComponent(), annotations: jobsList, completionHandler: { exportURL in
+        videoEditor.addAnnotations(sourceItem: self.videoItems[0], exportURL: inputVideoURL.deletingLastPathComponent(), annotations: jobsList, completionHandler: { exporter in
             let savePanel = NSSavePanel()
             savePanel.title = "Save"
             savePanel.nameFieldLabel = "Save field"
@@ -70,18 +110,20 @@ class PlayerViewModel: ObservableObject {
                         
             let response = savePanel.runModal()
             if response == .OK  {
-            guard let destination = savePanel.url else { return }
-            do {
-                if FileManager.default.fileExists(atPath: destination.path) {
-                    try FileManager.default.removeItem(at: destination)
-                }
-                try FileManager.default.moveItem(at: exportURL, to: destination)
+                guard let destination = savePanel.url, let outUrl = exporter.outputURL else { return }
+                do {
+                    if FileManager.default.fileExists(atPath: destination.path) {
+                        try FileManager.default.removeItem(at: destination)
+                    }
+                    try FileManager.default.moveItem(at: outUrl, to: destination)
+                    self.videoItems.removeAll()
+                    self.addVideo(with: destination)
+                    self.mergeVideos()
                 } catch {
                     print("Error while saving file! Aborting save file!")
                 }
             }
             self.isProcessingVideo = false
-            self.initialiseVideoPlayer(with: savePanel.url ?? URL(fileURLWithPath: ""))
             self.jobsList = []
         }, errorHandler: { _ in
             
